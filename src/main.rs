@@ -45,12 +45,12 @@ fn day_one() {
             left_list.push(numbers[0]);
             right_list.push(numbers[1]);
             
-            match similarity_score.get(&numbers[0]){
+            match similarity_score.get(&numbers[1]){
                 Some(x) => {
-                    similarity_score.insert(numbers[0], x+1);
+                    similarity_score.insert(numbers[1], x+1);
                 },
                 None => {
-                    similarity_score.insert(numbers[0], 0);
+                    similarity_score.insert(numbers[1], 1);
                 }
             }
         }
@@ -70,25 +70,27 @@ fn day_one() {
 
     for ii in 0..right_list.len()
     {
-        let mut n = left_list[ii];
-        let p = right_list[ii];
+        let mut lefty = left_list[ii];
+        let righty = right_list[ii];
 
-        n = match similarity_score.get(&n)
+        let mut delta: i32 = match similarity_score.get(&lefty)
         {
             Some(x) => {
-                x * n
+                println!("{lefty:6} has apeared {x} times");
+                x * lefty
             },
             None => {
-                n
+                // lefty
+                println!("{lefty:6} has apeared 0 times");
+                0
             }
         };
-        let mut delta: i32;
-        if n > p{
-            delta = n-p;
+        // if n > p{
+        //     delta = lefty-righty;
             
-        }else {
-            delta = p-n;  
-        }
+        // }else {
+        //     delta = righty-lefty;  
+        // }
         total_distance += delta;
         distances.push(delta);
     }
@@ -109,8 +111,8 @@ fn day_one() {
     //         distances.push(delta);
     //     }
     // }
-    for (index, distance) in distances.into_iter().enumerate(){
-        println!("[{:4}] {distance:6}: [{:6} -{:6}]",index+1,left_list[index], right_list[index]);
-    }
+    // for (index, distance) in distances.into_iter().enumerate(){
+    //     println!("[{:4}] {distance:6}: [{:6} -{:6}]",index+1,left_list[index], right_list[index]);
+    // }
     println!("\n [{total_distance}] ");
 }
