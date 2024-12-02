@@ -1,11 +1,11 @@
 use std::collections::HashMap;
 // use std::{collections::HashSet};
-use std::fs::{self, File};
+use std::fs::File;
 use std::io::{BufReader, BufRead};
 
 
 
-pub fn run() {  
+pub fn _run() {  
   let file_name = "./inputs/day_one.txt";
   
   let splitter = "   ";
@@ -59,10 +59,10 @@ pub fn run() {
 
   for ii in 0..right_list.len()
   {
-      let mut lefty = left_list[ii];
-      let righty = right_list[ii];
+      let lefty = left_list[ii];
+      // let righty = right_list[ii];
 
-      let mut delta: i32 = match similarity_score.get(&lefty)
+      let delta: i32 = match similarity_score.get(&lefty)
       {
           Some(x) => {
               println!("{lefty:6} has apeared {x} times");
@@ -70,7 +70,7 @@ pub fn run() {
           },
           None => {
               // lefty
-              println!("{lefty:6} has apeared 0 times");
+              // println!("{lefty:6} has apeared 0 times");
               0
           }
       };

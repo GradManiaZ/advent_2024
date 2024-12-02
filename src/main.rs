@@ -6,16 +6,17 @@
 //      3   9
 //      3   3
 
+use std::fs::File;
+use std::io::{BufRead,BufReader};
+// use colored::Colorize;
+
 
 
 mod day_one;
+mod day_two;
 
 fn main() {
     // println!("Hello, world!");
-    // day_one::run();
+    // day_one::_run();
+    day_two::_run();
 }
-
-pub fn day_two(){
-
-}
-
